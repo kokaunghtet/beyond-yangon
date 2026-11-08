@@ -1,0 +1,96 @@
+/* ─── Page Layout ───────────────────────────────────────────── */
+.card-container {
+  width: 100%;
+  min-height: 100vh;
+  padding: 4.5rem 2rem;
+
+  /* grid keeps cards equal-width and wrapping on every screen */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 260px));
+  justify-content: center;
+  align-content: center;
+  gap: 2rem;
+
+  background: var(--bg);
+}
+
+/* ─── Card ─────────────────────────────────────────────────── */
+.user-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  background: var(--surface);
+  border: 1px solid rgba(196, 154, 42, 0.35);
+  border-radius: 16px;
+
+  padding: 2.5rem 1.25rem 2rem;
+
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-medium),
+    box-shadow var(--transition-medium);
+
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* top gold accent */
+.user-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: var(--gold);
+}
+
+/* small gold divider under the name (flex child, no layout jumps) */
+.user-card::after {
+  content: "";
+  width: 36px;
+  height: 2px;
+  border-radius: 1px;
+  background: var(--gold);
+  margin-top: 0.9rem;
+}
+
+/* hover effect — lift + soft gold glow */
+.user-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-md), 0 0 24px rgba(196, 154, 42, 0.22);
+}
+
+/* ─── Image ────────────────────────────────────────────────── */
+.user-card img {
+  width: 132px;
+  height: 132px;
+
+  object-fit: cover;
+  border-radius: 50%;
+
+  border: 3px solid var(--gold);
+  background: var(--nav-bg);
+
+  /* double-ring look: surface gap + faint gold outer ring */
+  box-shadow: 0 0 0 5px var(--surface), 0 0 0 6px rgba(196, 154, 42, 0.45);
+
+  margin-bottom: 1.4rem;
+  transition: transform var(--transition-medium);
+}
+
+.user-card:hover img {
+  transform: scale(1.05);
+}
+
+/* ─── Name ─────────────────────────────────────────────────── */
+.user-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--heading);
+  margin-bottom: 0;
+}
